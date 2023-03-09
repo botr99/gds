@@ -56,7 +56,7 @@ func (a *AdminServer) HandleRegister(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusNoContent, gin.H{"status": "success"})
+	c.JSON(http.StatusNoContent, gin.H{})
 }
 
 func (a *AdminServer) HandleCommonStudents(c *gin.Context) {
@@ -88,11 +88,11 @@ func (a *AdminServer) HandleSuspend(c *gin.Context) {
 
 	err := a.service.SuspendStudent(HandleSuspendInput.Student)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err})
+		c.JSON(http.StatusInternalServerError, gin.H{"message": "Internal Server Error"})
 		return
 	}
 	
-	c.JSON(http.StatusNoContent, gin.H{"status": "success"})
+	c.JSON(http.StatusNoContent, gin.H{})
 }
 
 func (a *AdminServer) HandleRetrieveForNotifications(c *gin.Context) {
